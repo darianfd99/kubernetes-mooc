@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubernetes-mooc-1-1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output
+  namespace: kubernetes-mooc-1-1
+  labels:
+    app: log-output
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      containers:
+        - name: log-output
+          image: darianfd99/log_output:1.0.0
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 0.1
