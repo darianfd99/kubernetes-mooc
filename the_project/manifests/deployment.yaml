@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubernetes-mooc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-project
+  namespace: kubernetes-mooc
+  labels:
+    app: the-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: the-project
+  template:
+    metadata:
+      labels:
+        app: the-project
+    spec:
+      containers:
+        - name: the-project
+          image: darianfd99/the_project:1.2
+          env:
+            - name: PORT
+              value: "3597" # port example
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 0.1

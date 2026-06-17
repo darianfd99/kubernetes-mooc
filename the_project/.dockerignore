@@ -1,0 +1,10 @@
+.dockerignore
+manifests
+.git
+.gitignore
+*.md
+**/*_test.go
+Dockerfile*
+.env*
+bin/
+vendor/   # if using modules, not needed
